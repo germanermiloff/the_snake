@@ -114,10 +114,9 @@ class Snake(GameObject):
         """
         current_head_position = self.get_head_position()
         x, y = self.direction
-        new = (
-            (current_head_position[0] + (x * GRID_SIZE)) % SCREEN_WIDTH,
-            (current_head_position[1] + (y * GRID_SIZE)) % SCREEN_HEIGHT,
-            )
+        new = ((current_head_position[0] + (x * GRID_SIZE)) % SCREEN_WIDTH,
+               (current_head_position[1] + (y * GRID_SIZE)) % SCREEN_HEIGHT
+               )
         if new in self.positions[2:]:
             self.reset()
         else:
