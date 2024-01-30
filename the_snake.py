@@ -128,13 +128,13 @@ class Snake(GameObject):
         """Метод, который сбрасывает змейку в начальное состояние
         после столкновения с собой.
         """
-        global SPEED
+        global current_speed
         screen.fill(BOARD_BACKGROUND_COLOR)
         self.length = 1
         self.positions = [self.position]
         self.direction = choice([RIGHT, LEFT, UP, DOWN])
         self.next_direction = None
-        SPEED = 12
+        current_speed = SPEED
 
     def draw(self, surface):
         """Метод отрисовки змейки на игровом поле."""
@@ -179,12 +179,12 @@ def handle_keys(game_object):
 
 def main():
     """Основная функция, описывающая основной цикл игры."""
-    global SPEED
+    global current_speed
     snake = Snake()
     apple = Apple()
     apple.draw(screen)
     while True:
-        clock.tick(SPEED)
+        clock.tick(current_speed)
         handle_keys(snake)
         if next_direction:
             snake.update_direction(next_direction)
@@ -196,7 +196,7 @@ def main():
             if apple.position in snake.positions:
                 while apple.position in snake.positions:
                     apple.randomize_position()
-            SPEED += 1
+            current_speed += 1
         apple.draw(screen)
         snake.draw(screen)
         pygame.display.update()
