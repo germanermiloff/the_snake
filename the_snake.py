@@ -197,8 +197,8 @@ def main():
                 while apple.position in snake.positions:
                     apple.randomize_position()
             current_speed += 1
-        apple.draw(screen)
         snake.draw(screen)
+        apple.draw(screen)
         pygame.display.update()
 
 
